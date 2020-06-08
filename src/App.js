@@ -14,6 +14,7 @@ import HomeId from "./pages/HomeId";
 import viewFIRsCi from "./pages/citizen/viewFIRs";
 import newFIR from "./pages/citizen/newFIR";
 import firViewer from "./pages/common/FIRviewer";
+import submitEvidence from "./pages/common/submitEvidence";
 
 function App() {
     return (
@@ -26,6 +27,7 @@ function App() {
                 <Route exact path="/viewFIRs" component={viewFIRsCi}></Route>
                 <Route exact path="/newFIR" component={newFIR}></Route>
                 <Route exact path="/firViewer/:id" component={firViewer}></Route>
+                <Route exact path="/submitEvidence" component={submitEvidence}></Route>
             </ThemeProvider>
         </div>
     );

@@ -41,7 +41,7 @@ class App extends Component {
                 <Link to="/">Home</Link> <br />
                 <Link to="/viewFIRs">View FIR's</Link> <br />
                 <Link to="/newFIR">Add FIR</Link> <br />
-                <Link to="/">Add Evidence</Link> <br /> <br />
+                <Link to="/submitEvidence">Add Evidence</Link> <br /> <br />
                 <Button m={1} onClick={this.logout} variant="contained" color="primary">
                     Log Out
                 </Button>
