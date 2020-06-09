@@ -11,6 +11,27 @@ class App extends Component {
         redirect: null,
     };
 
+    async componentDidMount() {
+        if (localStorage.getItem("session")) {
+            const requestOptions = {
+                method: "GET",
+                headers: { "Content-Type": "application/json", "x-access-token": localStorage.getItem("session") },
+            };
+            let response = await fetch("http://192.168.1.30:3000/api/auth/verify/", requestOptions);
+            let res = await response.json();
+            if (res.status === 1) {
+                if (res.group === "citizen") this.setState({ redirect: <Redirect to="/HomeCi" /> });
+                else if (res.group === "police") this.setState({ redirect: <Redirect to="/HomePo" /> });
+                else if (res.group === "forensics") this.setState({ redirect: <Redirect to="/HomeFo" /> });
+                else if (res.group === "court") this.setState({ redirect: <Redirect to="/HomeCo" /> });
+                else if (res.group === "identityprovider") this.setState({ redirect: <Redirect to="/HomeId" /> });
+                else;
+            }
+            this.setState({ redirect: <Redirect to="/" /> });
+            console.log("Login Check!");
+        }
+    }
+
     login = async () => {
         const requestOptions = {
             method: "POST",
@@ -33,6 +54,7 @@ class App extends Component {
             else if (this.state.group === "forensics") this.setState({ redirect: <Redirect to="/HomeFo" /> });
             else if (this.state.group === "court") this.setState({ redirect: <Redirect to="/HomeCo" /> });
             else if (this.state.group === "identityprovider") this.setState({ redirect: <Redirect to="/HomeId" /> });
+            else;
         } else
             this.setState({
                 redirect: "Wrong Credentials!",
