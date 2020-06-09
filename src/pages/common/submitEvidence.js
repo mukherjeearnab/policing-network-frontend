@@ -1,5 +1,5 @@
 import axios from "axios";
-import { TextField, Button } from "@material-ui/core";
+import { TextField, Button, CircularProgress } from "@material-ui/core";
 import React, { Component } from "react";
 
 class App extends Component {
@@ -23,6 +23,15 @@ class App extends Component {
 
     // On file upload (click the upload button)
     onFileUpload = async () => {
+        this.setState({
+            ID: (
+                <span>
+                    <CircularProgress />
+                    <br></br> Loading.....
+                </span>
+            ),
+        });
+
         // Create an object of formData
         const formData = new FormData();
 
@@ -34,14 +43,18 @@ class App extends Component {
             JSON.stringify({ Description: this.state.description, InvestigationID: this.state.InvestigationID })
         );
 
+        let config = {
+            headers: { "Content-Type": "application/json", "x-access-token": localStorage.getItem("session") },
+        };
+
         // Details of the uploaded file
         console.log(this.state.selectedFile);
 
         // Request made to the backend api
         // Send formData object
-        var reply = await axios.post("http://192.168.1.30:3000/api/main/evidence/add", formData);
+        var reply = await axios.post("http://192.168.1.30:3000/api/main/evidence/add", formData, config);
         console.log(reply);
-        this.setState({ ID: "Evidence ID:" + reply.hash.ID });
+        this.setState({ ID: "Evidence ID:" + reply.data.hash.ID });
     };
 
     // File content to be displayed after
@@ -53,7 +66,7 @@ class App extends Component {
                     <h2>File Details:</h2>
                     <p>File Name: {this.state.selectedFile.name}</p>
                     <p>File Type: {this.state.selectedFile.type}</p>
-                    <h2>{this.state.hash}</h2>
+                    <h2>{this.state.ID}</h2>
                 </div>
             );
         } else {

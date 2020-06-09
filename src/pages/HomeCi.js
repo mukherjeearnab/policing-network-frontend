@@ -35,6 +35,7 @@ class App extends Component {
     render() {
         return (
             <div>
+                <h2>Citizen Dashboard</h2>
                 <h2>
                     {this.state.redirect}Welcome, {this.state.profile.Name}!
                 </h2>

@@ -28,7 +28,11 @@ class App extends Component {
         if (res.jwtoken) {
             localStorage.setItem("session", res.jwtoken);
             localStorage.setItem("user", this.state.username);
-            this.setState({ redirect: <Redirect to="/HomeCi" /> });
+            if (this.state.group === "citizen") this.setState({ redirect: <Redirect to="/HomeCi" /> });
+            else if (this.state.group === "police") this.setState({ redirect: <Redirect to="/HomePo" /> });
+            else if (this.state.group === "forensics") this.setState({ redirect: <Redirect to="/HomeFo" /> });
+            else if (this.state.group === "court") this.setState({ redirect: <Redirect to="/HomeCo" /> });
+            else if (this.state.group === "identityprovider") this.setState({ redirect: <Redirect to="/HomeId" /> });
         } else
             this.setState({
                 redirect: "Wrong Credentials!",
