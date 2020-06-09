@@ -5,10 +5,8 @@ import { TextField, Button, CircularProgress } from "@material-ui/core";
 
 class App extends Component {
     state = {
-        CitizenID: "",
-        Cause: "",
+        Content: "",
         Date: "",
-        Mugshot: "XXXXX",
         ID: "",
         message: "",
     };
@@ -18,17 +16,15 @@ class App extends Component {
         this.setState({ ID: id });
     }
 
-    onAddArrest = async () => {
+    onAddReport = async () => {
         console.log(this.state.investigation);
         const requestOptions = {
             method: "POST",
             headers: { "Content-Type": "application/json", "x-access-token": localStorage.getItem("session") },
             body: JSON.stringify({
                 payload: JSON.stringify({
-                    CitizenID: this.state.CitizenID,
-                    Cause: this.state.Cause,
+                    Content: this.state.Content,
                     Date: new Date(this.state.Date).getTime().toString(),
-                    Mugshot: this.state.Mugshot,
                 }),
             }),
         };
@@ -43,7 +39,7 @@ class App extends Component {
         });
 
         let response = await fetch(
-            "http://192.168.1.30:3000/api/main/investigation/addarrest/" + this.state.ID,
+            "http://192.168.1.30:3000/api/main/investigation/addreport/" + this.state.ID,
             requestOptions
         );
         let res = await response.json();
@@ -54,32 +50,23 @@ class App extends Component {
     render() {
         return (
             <div>
-                <h2>Add Arrest to Investigation</h2>
+                <h2>Add Brief Report to Investigation</h2>
                 {this.state.message}
 
                 <h1>Investigation ID - {this.state.ID}</h1>
 
-                <TextField
-                    className="inputs"
-                    label="Citizen ID"
-                    variant="outlined"
-                    value={this.state.CitizenID}
-                    onChange={(event) => {
-                        this.setState({
-                            CitizenID: event.target.value,
-                        });
-                    }}
-                />
                 <br />
                 <br />
                 <TextField
                     className="inputs"
-                    label="Arrest Cause"
+                    label="Report Content"
                     variant="outlined"
-                    value={this.state.Cause}
+                    multiline
+                    rows={10}
+                    value={this.state.Content}
                     onChange={(event) => {
                         this.setState({
-                            Cause: event.target.value,
+                            Content: event.target.value,
                         });
                     }}
                 />
@@ -88,7 +75,7 @@ class App extends Component {
                 <TextField
                     type="date"
                     className="inputs"
-                    label="Arrest Date"
+                    label="Report Date"
                     variant="outlined"
                     value={this.state.Date}
                     onChange={(event) => {
@@ -100,8 +87,8 @@ class App extends Component {
                 <br />
                 <br />
 
-                <Button onClick={this.onAddArrest} variant="contained" color="primary">
-                    Add Arrest to Investigation
+                <Button onClick={this.onAddReport} variant="contained" color="primary">
+                    Add Brief Report to Investigation
                 </Button>
             </div>
         );

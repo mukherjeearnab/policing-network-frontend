@@ -20,7 +20,7 @@ class App extends Component {
                 </h2>
                 <Link to="/viewFIRs">View FIR's</Link> <br />
                 <Link to="/newInvestigation">Start Investigation</Link> <br />
-                <Link to="/viewInvestigation">View / Add Content to Investigation</Link> <br />
+                <Link to="/viewInvestigation/0">View / Add Content to Investigation</Link> <br />
                 <Link to="/submitEvidence">Add Evidence</Link> <br />
                 <Link to="/newChargesheet">File New ChargeSheet</Link> <br />
                 <Link to="/editChargesheet">Add Content to Chargesheet</Link> <br />

@@ -11,6 +11,20 @@ class App extends Component {
         ID: "",
     };
 
+    async componentDidMount() {
+        const { id } = this.props.match.params;
+        if (id !== "0") {
+            this.setState({
+                ID: id,
+                message: (
+                    <p>
+                        Press <b>LOAD INVESTIGATION</b> to View Investigation
+                    </p>
+                ),
+            });
+        }
+    }
+
     onLoadInvestigation = async () => {
         console.log(this.state.investigation);
         const requestOptions = {
@@ -40,7 +54,7 @@ class App extends Component {
             <div>
                 <Link to={"/updateInvestigation/" + this.state.investigation.ID}>Update Investigation</Link> <br />
                 <Link to={"/addArrest/" + this.state.investigation.ID}>Add Arrest to Investigation</Link> <br />
-                <Link to={"/addReportI/" + this.state.investigation.ID}>Add Report to ID Investigation</Link> <br />
+                <Link to={"/addiReport/" + this.state.investigation.ID}>Add Report to ID Investigation</Link> <br />
                 {this.createContent()}
             </div>
         );
@@ -190,7 +204,14 @@ class App extends Component {
                     }}
                 />
                 <br /> <br />
-                <Button onClick={this.onLoadInvestigation} variant="contained" color="primary">
+                <Button
+                    ref={(button) => {
+                        this.LoadBT = button;
+                    }}
+                    onClick={this.onLoadInvestigation}
+                    variant="contained"
+                    color="primary"
+                >
                     Load Investigation
                 </Button>
                 <br /> <br />
