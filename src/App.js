@@ -21,6 +21,7 @@ import updateInvestigation from "./pages/police/updateInvestigation";
 import addArrest from "./pages/police/addArrest";
 import addiReport from "./pages/police/addiReport";
 import viewEvidence from "./pages/common/evidenceViewer";
+import newCitizen from "./pages/identityprovider/createCitizenProfile";
 
 function App() {
     return (
@@ -46,6 +47,7 @@ function App() {
                 <Route exact path="/addArrest/:id" component={addArrest}></Route>
                 <Route exact path="/addiReport/:id" component={addiReport}></Route>
                 <Route exact path="/evidenceViewer" component={viewEvidence}></Route>
+                <Route exact path="/newCitizen" component={newCitizen}></Route>
             </ThemeProvider>
         </div>
     );

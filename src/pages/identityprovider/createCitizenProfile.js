@@ -3,12 +3,13 @@ import { Redirect } from "react-router-dom";
 import axios from "axios";
 
 import { TextField, Button, CircularProgress } from "@material-ui/core";
+import { ImagePhotoFilter } from "material-ui/svg-icons";
 
 class App extends Component {
     state = {
         profile: {
             ID: "",
-            Name: 0,
+            Name: "",
             Email: "",
             Phone: "",
             DOB: "",
@@ -39,6 +40,11 @@ class App extends Component {
                 </span>
             ),
         });
+
+        let profile = this.state.profile;
+        profile.DOB = new Date(this.state.profile.DOB).getTime().toString();
+        this.setState({ profile });
+        console.log(this.state.profile);
 
         // Create an object of formData
         const formData = new FormData();
@@ -106,7 +112,6 @@ class App extends Component {
                 <br />
                 <br />
                 <TextField
-                    type="date"
                     className="inputs"
                     label="Name"
                     variant="outlined"
@@ -123,6 +128,7 @@ class App extends Component {
                 <br />
                 <TextField
                     className="inputs"
+                    type="date"
                     label="Date Of Birth"
                     variant="outlined"
                     value={this.state.profile.DOB}
