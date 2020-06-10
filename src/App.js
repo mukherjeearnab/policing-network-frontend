@@ -20,6 +20,7 @@ import viewInvestigation from "./pages/police/viewInvestigation";
 import updateInvestigation from "./pages/police/updateInvestigation";
 import addArrest from "./pages/police/addArrest";
 import addiReport from "./pages/police/addiReport";
+import viewEvidence from "./pages/common/evidenceViewer";
 
 function App() {
     return (
@@ -44,6 +45,7 @@ function App() {
                 <Route exact path="/updateInvestigation/:id" component={updateInvestigation}></Route>
                 <Route exact path="/addArrest/:id" component={addArrest}></Route>
                 <Route exact path="/addiReport/:id" component={addiReport}></Route>
+                <Route exact path="/evidenceViewer" component={viewEvidence}></Route>
             </ThemeProvider>
         </div>
     );
