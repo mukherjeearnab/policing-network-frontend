@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import axios from "axios";
-
 import { TextField, Button, CircularProgress } from "@material-ui/core";
-import { ImagePhotoFilter } from "material-ui/svg-icons";
 
 class App extends Component {
     state = {
