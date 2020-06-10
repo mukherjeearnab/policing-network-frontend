@@ -88,6 +88,8 @@ class App extends Component {
                 <h2>New Citizen Profile</h2>
                 {this.state.message}
                 <TextField variant="outlined" type="file" label="Citizen Photo" onChange={this.onFileChange} />
+                <br />
+                {this.fileData()}
                 <TextField
                     className="inputs"
                     label="Nationality"
@@ -101,6 +103,8 @@ class App extends Component {
                         });
                     }}
                 />
+                <br />
+                <br />
                 <TextField
                     type="date"
                     className="inputs"
@@ -115,6 +119,8 @@ class App extends Component {
                         });
                     }}
                 />
+                <br />
+                <br />
                 <TextField
                     className="inputs"
                     label="Date Of Birth"
@@ -128,6 +134,8 @@ class App extends Component {
                         });
                     }}
                 />
+                <br />
+                <br />
                 <TextField
                     className="inputs"
                     label="Eye Color"
@@ -141,6 +149,8 @@ class App extends Component {
                         });
                     }}
                 />
+                <br />
+                <br />
                 <TextField
                     className="inputs"
                     label="Gender"
@@ -154,6 +164,8 @@ class App extends Component {
                         });
                     }}
                 />
+                <br />
+                <br />
                 <TextField
                     className="inputs"
                     label="Blood Group"
@@ -167,6 +179,8 @@ class App extends Component {
                         });
                     }}
                 />
+                <br />
+                <br />
                 <TextField
                     className="inputs"
                     label="E-Mail"
@@ -180,6 +194,8 @@ class App extends Component {
                         });
                     }}
                 ></TextField>
+                <br />
+                <br />
                 <TextField
                     className="inputs"
                     label="Phone"
@@ -193,6 +209,8 @@ class App extends Component {
                         });
                     }}
                 ></TextField>
+                <br />
+                <br />
                 <TextField
                     className="inputs"
                     label="ID Number"
@@ -206,6 +224,8 @@ class App extends Component {
                         });
                     }}
                 ></TextField>
+                <br />
+                <br />
                 <TextField
                     className="inputs"
                     label="Address"
@@ -221,6 +241,8 @@ class App extends Component {
                         });
                     }}
                 ></TextField>
+                <br />
+                <br />
                 <TextField
                     className="inputs"
                     label="Father's Name"
@@ -234,6 +256,8 @@ class App extends Component {
                         });
                     }}
                 ></TextField>
+                <br />
+                <br />
                 <TextField
                     className="inputs"
                     label="Mother's Name"
@@ -247,6 +271,8 @@ class App extends Component {
                         });
                     }}
                 ></TextField>
+                <br />
+                <br />
                 <TextField
                     className="inputs"
                     label="Religion"
@@ -260,6 +286,8 @@ class App extends Component {
                         });
                     }}
                 ></TextField>
+                <br />
+                <br />
                 <TextField
                     className="inputs"
                     label="Occupation"
@@ -278,7 +306,6 @@ class App extends Component {
                 <Button onClick={this.onAddCitizen} variant="contained" color="primary">
                     Save Citizen Profile
                 </Button>
-                {this.fileData()}
             </div>
         );
     }
