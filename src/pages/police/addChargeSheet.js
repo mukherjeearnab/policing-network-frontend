@@ -47,12 +47,12 @@ class App extends Component {
                 {this.state.message}
                 <TextField
                     className="inputs"
-                    label="FIR ID"
+                    label="Date"
                     variant="outlined"
-                    value={this.state.chargesheet.Name}
+                    value={this.state.chargesheet.DateTime}
                     onChange={(event) => {
                         let chargesheet = this.state.chargesheet;
-                        chargesheet.Name = event.target.value;
+                        chargesheet.DateTime = event.target.value;
                         this.setState({
                             chargesheet,
                         });
@@ -61,12 +61,26 @@ class App extends Component {
                 <TextField
                     type="date"
                     className="inputs"
-                    label="Investigating DespatchDate"
+                    label="Despatch Date"
                     variant="outlined"
                     value={this.state.chargesheet.DespatchDate}
                     onChange={(event) => {
                         let chargesheet = this.state.chargesheet;
                         chargesheet.DespatchDate = event.target.value;
+                        this.setState({
+                            chargesheet,
+                        });
+                    }}
+                />
+                <TextField
+                    type="date"
+                    className="inputs"
+                    label="Charge Sheet Title"
+                    variant="outlined"
+                    value={this.state.chargesheet.Name}
+                    onChange={(event) => {
+                        let chargesheet = this.state.chargesheet;
+                        chargesheet.Name = event.target.value;
                         this.setState({
                             chargesheet,
                         });

@@ -19,8 +19,7 @@ class App extends Component {
                     {this.state.redirect}Welcome, {localStorage.getItem("user")}!
                 </h2>
                 <Link to="/newCitizen">Create New Citizen Profile</Link> <br />
-                <Link to="/evidenceViewer">View Evidence</Link> <br />
-                <Link to="/viewInvestigation/0">View Investigation</Link> <br />
+                <Link to="/updateCitizen">Update Citizen Profile</Link> <br />
                 <Button m={1} onClick={this.logout} variant="contained" color="primary">
                     Log Out
                 </Button>
