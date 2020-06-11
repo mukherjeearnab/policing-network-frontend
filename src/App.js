@@ -23,6 +23,13 @@ import addiReport from "./pages/police/addiReport";
 import viewEvidence from "./pages/common/evidenceViewer";
 import newCitizen from "./pages/identityprovider/createCitizenProfile";
 import updateCitizen from "./pages/identityprovider/updateCitizenProfile";
+import addAccusedPerson from "./pages/police/addAccusedPerson";
+import addBriefReport from "./pages/police/addBriefReport";
+import addChargedPerson from "./pages/police/addChargedPerson";
+import addFIRIDs from "./pages/police/addFIRIDs";
+import addInvestigatingOfficer from "./pages/police/addInvestigatingOfficer";
+import addInvestigationID from "./pages/police/addInvestigationID";
+import addSectionOfLaw from "./pages/police/addSectionOfLaw";
 
 function App() {
     return (
@@ -50,6 +57,13 @@ function App() {
                 <Route exact path="/evidenceViewer" component={viewEvidence}></Route>
                 <Route exact path="/newCitizen" component={newCitizen}></Route>
                 <Route exact path="/updateCitizen" component={updateCitizen}></Route>
+                <Route exact path="/addFIRIDs" component={addFIRIDs}></Route>
+                <Route exact path="/addSectionOFLaw" component={addSectionOfLaw}></Route>
+                <Route exact path="/addInvestigatingOfficer" component={addInvestigatingOfficer}></Route>
+                <Route exact path="/addInvestigationID" component={addInvestigationID}></Route>
+                <Route exact path="/addAccusedPerson" component={addAccusedPerson}></Route>
+                <Route exact path="/addBriefReport" component={addBriefReport}></Route>
+                <Route exact path="/addChargedPerson" component={addChargedPerson}></Route>
             </ThemeProvider>
         </div>
     );
