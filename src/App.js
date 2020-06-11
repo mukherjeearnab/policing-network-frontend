@@ -31,6 +31,11 @@ import addFIRIDs from "./pages/police/addFIRIDs";
 import addInvestigatingOfficer from "./pages/police/addInvestigatingOfficer";
 import addInvestigationID from "./pages/police/addInvestigationID";
 import addSectionOfLaw from "./pages/police/addSectionOfLaw";
+import createJudgement from "./pages/court/createJudgement";
+import viewJudgement from "./pages/court/viewJudgement";
+import addEvidenceID from "./pages/court/addEvidenceID";
+import addSentence from "./pages/court/addSentence";
+import setComplete from "./pages/court/setComplete";
 
 function App() {
     return (
@@ -66,6 +71,11 @@ function App() {
                 <Route exact path="/addAccusedPerson/:id" component={addAccusedPerson}></Route>
                 <Route exact path="/addBriefReport/:id" component={addBriefReport}></Route>
                 <Route exact path="/addChargedPerson/:id" component={addChargedPerson}></Route>
+                <Route exact path="/createJudgement" component={createJudgement}></Route>
+                <Route exact path="/viewJudgement/:id" component={viewJudgement}></Route>
+                <Route exact path="/addEvidenceID/:id" component={addEvidenceID}></Route>
+                <Route exact path="/addSentence/:id" component={addSentence}></Route>
+                <Route exact path="/setComplete/:id" component={setComplete}></Route>
             </ThemeProvider>
         </div>
     );

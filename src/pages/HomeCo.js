@@ -22,7 +22,7 @@ class App extends Component {
                 <Link to="/evidenceViewer">View Evidence</Link> <br />
                 <Link to="/viewInvestigation/0">View Investigation</Link> <br />
                 <Link to="/createJudgement">Create Judgement Report</Link> <br />
-                <Link to="/viewJudgement">View / Evaluate Judgement Report</Link> <br />
+                <Link to="/viewJudgement/0">View / Evaluate Judgement Report</Link> <br />
                 <Button m={1} onClick={this.logout} variant="contained" color="primary">
                     Log Out
                 </Button>
