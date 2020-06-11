@@ -36,6 +36,7 @@ import viewJudgement from "./pages/court/viewJudgement";
 import addEvidenceID from "./pages/court/addEvidenceID";
 import addSentence from "./pages/court/addSentence";
 import setComplete from "./pages/court/setComplete";
+import viewProfile from "./pages/identityprovider/viewProfile";
 
 function App() {
     return (
@@ -76,6 +77,7 @@ function App() {
                 <Route exact path="/addEvidenceID/:id" component={addEvidenceID}></Route>
                 <Route exact path="/addSentence/:id" component={addSentence}></Route>
                 <Route exact path="/setComplete/:id" component={setComplete}></Route>
+                <Route exact path="/viewProfile" component={viewProfile}></Route>
             </ThemeProvider>
         </div>
     );
