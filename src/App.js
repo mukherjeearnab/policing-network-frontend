@@ -23,6 +23,7 @@ import addiReport from "./pages/police/addiReport";
 import viewEvidence from "./pages/common/evidenceViewer";
 import newCitizen from "./pages/identityprovider/createCitizenProfile";
 import updateCitizen from "./pages/identityprovider/updateCitizenProfile";
+import viewChargesheet from "./pages/police/viewChargeSheet";
 import addAccusedPerson from "./pages/police/addAccusedPerson";
 import addBriefReport from "./pages/police/addBriefReport";
 import addChargedPerson from "./pages/police/addChargedPerson";
@@ -57,6 +58,7 @@ function App() {
                 <Route exact path="/evidenceViewer" component={viewEvidence}></Route>
                 <Route exact path="/newCitizen" component={newCitizen}></Route>
                 <Route exact path="/updateCitizen" component={updateCitizen}></Route>
+                <Route exact path="/viewChargeSheet/:id" component={viewChargesheet}></Route>
                 <Route exact path="/addFIRIDs/:id" component={addFIRIDs}></Route>
                 <Route exact path="/addSectionOFLaw/:id" component={addSectionOfLaw}></Route>
                 <Route exact path="/addInvestigatingOfficer/:id" component={addInvestigatingOfficer}></Route>

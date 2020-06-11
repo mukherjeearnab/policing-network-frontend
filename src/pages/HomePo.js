@@ -23,7 +23,7 @@ class App extends Component {
                 <Link to="/viewInvestigation/0">View / Add Content to Investigation</Link> <br />
                 <Link to="/submitEvidence">Add Evidence</Link> <br />
                 <Link to="/newChargesheet">File New ChargeSheet</Link> <br />
-                <Link to="/editChargesheet">Add Content to Chargesheet</Link> <br />
+                <Link to="/viewChargeSheet/0">View / Add Content to Chargesheet</Link> <br />
                 <Button m={1} onClick={this.logout} variant="contained" color="primary">
                     Log Out
                 </Button>
