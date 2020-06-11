@@ -57,13 +57,13 @@ function App() {
                 <Route exact path="/evidenceViewer" component={viewEvidence}></Route>
                 <Route exact path="/newCitizen" component={newCitizen}></Route>
                 <Route exact path="/updateCitizen" component={updateCitizen}></Route>
-                <Route exact path="/addFIRIDs" component={addFIRIDs}></Route>
-                <Route exact path="/addSectionOFLaw" component={addSectionOfLaw}></Route>
-                <Route exact path="/addInvestigatingOfficer" component={addInvestigatingOfficer}></Route>
-                <Route exact path="/addInvestigationID" component={addInvestigationID}></Route>
-                <Route exact path="/addAccusedPerson" component={addAccusedPerson}></Route>
-                <Route exact path="/addBriefReport" component={addBriefReport}></Route>
-                <Route exact path="/addChargedPerson" component={addChargedPerson}></Route>
+                <Route exact path="/addFIRIDs/:id" component={addFIRIDs}></Route>
+                <Route exact path="/addSectionOFLaw/:id" component={addSectionOfLaw}></Route>
+                <Route exact path="/addInvestigatingOfficer/:id" component={addInvestigatingOfficer}></Route>
+                <Route exact path="/addInvestigationID/:id" component={addInvestigationID}></Route>
+                <Route exact path="/addAccusedPerson/:id" component={addAccusedPerson}></Route>
+                <Route exact path="/addBriefReport/:id" component={addBriefReport}></Route>
+                <Route exact path="/addChargedPerson/:id" component={addChargedPerson}></Route>
             </ThemeProvider>
         </div>
     );
