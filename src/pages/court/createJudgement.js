@@ -47,6 +47,7 @@ class App extends Component {
             <div>
                 <h2>New Investigation</h2>
                 {this.state.message}
+                <br />
                 <TextField
                     className="inputs"
                     label="Aggravating Mitigating Circumstances"
@@ -183,8 +184,8 @@ class App extends Component {
                 />
                 <br />
                 <br />
-                <Button onClick={this.onAddInvestigation} variant="contained" color="primary">
-                    Init. Investigation
+                <Button onClick={this.onAddFIR} variant="contained" color="primary">
+                    Init. Judgement
                 </Button>
             </div>
         );

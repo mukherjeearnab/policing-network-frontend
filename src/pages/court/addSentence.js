@@ -44,7 +44,7 @@ class App extends Component {
         );
         let res = await response.json();
         console.log(res);
-        this.setState({ message: <Redirect to={"/viewChargeSheet/" + this.state.ID} /> });
+        this.setState({ message: <Redirect to={"/viewJudgement/" + this.state.ID} /> });
     };
 
     render() {

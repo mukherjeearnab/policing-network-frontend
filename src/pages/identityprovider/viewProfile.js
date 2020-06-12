@@ -7,12 +7,11 @@ class App extends Component {
     state = {
         redirect: "",
         ID: "",
-        profile: {
-            Name: "",
-        },
+        profile: {},
+        output: null,
     };
 
-    async loadProfile() {
+    loadProfile = async () => {
         const requestOptions = {
             method: "GET",
             headers: { "Content-Type": "application/json", "x-access-token": localStorage.getItem("session") },
@@ -21,7 +20,65 @@ class App extends Component {
         let res = await response.json();
         console.log(res);
         this.setState({ profile: res });
-    }
+
+        let table = (
+            <TableContainer component={Paper}>
+                <Table aria-label="simple table">
+                    <TableHead>
+                        <TableRow>
+                            <TableCell align="left">
+                                <b>Serial</b>
+                            </TableCell>
+                            <TableCell align="left">
+                                <b>Judgement ID</b>
+                            </TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {this.state.profile.VerdictRecord
+                            ? this.state.profile.VerdictRecord.map((content, index) => {
+                                  return (
+                                      <TableRow key={index}>
+                                          <TableCell align="left">{(index + 1).toString()}</TableCell>
+                                          <TableCell align="left">
+                                              <Link target="blank" to={"/viewJudgement/" + content}>
+                                                  {content}
+                                              </Link>
+                                          </TableCell>
+                                      </TableRow>
+                                  );
+                              })
+                            : ""}
+                    </TableBody>
+                </Table>
+            </TableContainer>
+        );
+
+        let output = (
+            <div>
+                <img
+                    alt="profile-pic"
+                    width="200"
+                    src={"https://ipfs.infura.io/ipfs/" + this.state.profile.Photo}
+                ></img>
+                <h3>{this.state.profile.Name}</h3>
+                <h3>Father's Name: {this.state.profile.FathersName}</h3>
+                <h3>Mother's Name: {this.state.profile.MothersName}</h3>
+                <h3>Religion: {this.state.profile.Religion}</h3>
+                <h3>Phone: {this.state.profile.Phone}</h3>
+                <h3>DOB: {new Date(this.state.profile.DOB).toString()}</h3>
+                <h3>Gender: {this.state.profile.Gender}</h3>
+                <h3>Blood Group: {this.state.profile.BloodGroup}</h3>
+                <h3>Address: {this.state.profile.Address}</h3>
+                <h3>Email: {this.state.profile.Email}</h3>
+                <h3>Eye Color: {this.state.profile.EyeColor}</h3>
+                <h3>Occupation: {this.state.profile.Occupation}</h3>
+                <h3>Verdict Record</h3>
+                <div>{table}</div>
+            </div>
+        );
+        this.setState({ output });
+    };
 
     render() {
         return (
@@ -38,56 +95,13 @@ class App extends Component {
                         });
                     }}
                 />
-                <Button m={1} onClick={this.logout} variant="contained" color="primary">
-                    Log Out
+                <br />
+                <br />
+                <Button m={1} onClick={this.loadProfile} variant="contained" color="primary">
+                    Load Citizen
                 </Button>
                 <hr />
-                <img
-                    alt="profile-pic"
-                    width="200"
-                    src={"https://ipfs.infura.io/ipfs/" + this.state.profile.Photo}
-                ></img>
-                <h3>{this.state.profile.Name}</h3>
-                <h3>Father's Name: {this.state.profile.FathersName}</h3>
-                <h3>Mother's Name: {this.state.profile.MothersName}</h3>
-                <h3>Religion: {this.state.profile.Religion}</h3>
-                <h3>Phone: {this.state.profile.Phone}</h3>
-                <h3>DOB: {() => new Date(this.state.profile.DOB).toString()}</h3>
-                <h3>Gender: {this.state.profile.Gender}</h3>
-                <h3>Blood Group: {this.state.profile.BloodGroup}</h3>
-                <h3>Address: {this.state.profile.Address}</h3>
-                <h3>Email: {this.state.profile.Email}</h3>
-                <h3>Eye Color: {this.state.profile.EyeColor}</h3>
-                <h3>Occupation: {this.state.profile.Occupation}</h3>
-                <h3>Verdict Record</h3>
-                <div>
-                    <TableContainer component={Paper}>
-                        <Table aria-label="simple table">
-                            <TableHead>
-                                <TableRow>
-                                    <TableCell align="left">
-                                        <b>Serial</b>
-                                    </TableCell>
-                                    <TableCell align="left">
-                                        <b>Judgement ID</b>
-                                    </TableCell>
-                                </TableRow>
-                            </TableHead>
-                            <TableBody>
-                                {this.state.profile.VerdictRecord.map((content, index) => {
-                                    return (
-                                        <TableRow key={index}>
-                                            <TableCell align="left">{index + 1}</TableCell>
-                                            <TableCell align="left">
-                                                <Link target="blank" to={"/viewJudgement/" + content}></Link>
-                                            </TableCell>
-                                        </TableRow>
-                                    );
-                                })}
-                            </TableBody>
-                        </Table>
-                    </TableContainer>
-                </div>
+                {this.state.output}
             </div>
         );
     }

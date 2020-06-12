@@ -155,12 +155,11 @@ class App extends Component {
                 />
                 <h3>
                     Evidence:{" "}
-                    {() => {
-                        let str = "";
-                        for (var a = 0; a < this.state.judgement.Evidence.length; a++)
-                            str += str + "; " + this.state.judgement.Evidence[a];
-                        return str;
-                    }}
+                    {this.state.judgement.Evidence
+                        ? this.state.judgement.Evidence.map((content, index) => {
+                              return <span>{content + "; "}</span>;
+                          })
+                        : ""}
                 </h3>
                 <TableContainer component={Paper}>
                     <Table aria-label="simple table">
@@ -175,14 +174,16 @@ class App extends Component {
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {this.state.judgement.Deliberations.Sentence.map((content, index) => {
-                                return (
-                                    <TableRow key={content.CitizenID}>
-                                        <TableCell align="left">{content.CitizenID}</TableCell>
-                                        <TableCell align="left">{content.Statement}</TableCell>
-                                    </TableRow>
-                                );
-                            })}
+                            {this.state.judgement.Deliberations.Sentence
+                                ? this.state.judgement.Deliberations.Sentence.map((content, index) => {
+                                      return (
+                                          <TableRow key={content.CitizenID}>
+                                              <TableCell align="left">{content.CitizenID}</TableCell>
+                                              <TableCell align="left">{content.Statement}</TableCell>
+                                          </TableRow>
+                                      );
+                                  })
+                                : null}
                         </TableBody>
                     </Table>
                 </TableContainer>

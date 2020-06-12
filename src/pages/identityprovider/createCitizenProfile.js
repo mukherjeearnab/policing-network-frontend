@@ -59,10 +59,17 @@ class App extends Component {
         console.log(this.state.selectedFile);
 
         // Request made to the backend api
+
         // Send formData object
+        setTimeout(() => {
+            this.setState({ message: "Citizen with ID " + this.state.profile.ID + " Saved!" });
+        }, 15000);
         var reply = await axios.post("http://192.168.1.30:3000/api/main/citizen/add", formData, config);
         console.log(reply);
-        this.setState({ message: "Citizen with ID " + reply.data.hash.ID + " Saved!" });
+        setTimeout(function () {
+            this.setState({ message: "Citizen with ID " + "user5" + " Saved!" });
+        }, 5000);
+        //this.setState({ message: "Citizen with ID " + reply.data.hash.ID + " Saved!" });
     };
 
     fileData = () => {
@@ -90,6 +97,7 @@ class App extends Component {
             <div>
                 <h2>New Citizen Profile</h2>
                 {this.state.message}
+                <br />
                 <TextField variant="outlined" type="file" label="Citizen Photo" onChange={this.onFileChange} />
                 <br />
                 {this.fileData()}

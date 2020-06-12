@@ -107,7 +107,7 @@ class App extends Component {
             );
         }
 
-        if (this.state.chargesheet.BriefReports) {
+        if (this.state.chargesheet.BriefReport) {
             briefReports = (
                 <div>
                     <TableContainer component={Paper}>
@@ -123,9 +123,9 @@ class App extends Component {
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                {this.state.chargesheet.BriefReports.map((content, index) => {
+                                {this.state.chargesheet.BriefReport.map((content, index) => {
                                     return (
-                                        <TableRow key={new Date()}>
+                                        <TableRow key={index}>
                                             <TableCell align="left">{index + 1}</TableCell>
                                             <TableCell align="left">{content.Content}</TableCell>
                                         </TableRow>
@@ -159,12 +159,9 @@ class App extends Component {
                                         <TableRow key={content.CitizenID}>
                                             <TableCell align="left">{content.CitizenID}</TableCell>
                                             <TableCell align="left">
-                                                {() => {
-                                                    let str = "";
-                                                    for (var a = 0; a < content.SectionOfLaws.length; a++)
-                                                        str += str + "; " + content.SectionOfLaws[a];
-                                                    return str;
-                                                }}
+                                                {content.SectionOfLaws.map((content, index) => {
+                                                    return <span>{content + "; "}</span>;
+                                                })}
                                             </TableCell>
                                         </TableRow>
                                     );
@@ -182,40 +179,36 @@ class App extends Component {
                 <h3>Title: {this.state.chargesheet.Name}</h3>
                 <h3>
                     FIR IDs:{" "}
-                    {() => {
-                        let str = "";
-                        for (var a = 0; a < this.state.chargesheet.FIRIDs.length; a++)
-                            str += str + "; " + this.state.chargesheet.FIRIDs[a];
-                        return str;
-                    }}
+                    {this.state.chargesheet.FIRIDs
+                        ? this.state.chargesheet.FIRIDs.map((content, index) => {
+                              return <span>{content + "; "}</span>;
+                          })
+                        : ""}
                 </h3>
-                <h3>Date: {() => new Date(this.state.chargesheet.DateTime).toString()}</h3>
+                <h3>Date: {new Date(this.state.chargesheet.DateTime).toString()}</h3>
                 <h3>
                     Section Of Laws:{" "}
-                    {() => {
-                        let str = "";
-                        for (var a = 0; a < this.state.chargesheet.SectionOfLaws.length; a++)
-                            str += str + "; " + this.state.chargesheet.SectionOfLaws[a];
-                        return str;
-                    }}
+                    {this.state.chargesheet.SectionOfLaws
+                        ? this.state.chargesheet.SectionOfLaws.map((content, index) => {
+                              return <span>{content + "; "}</span>;
+                          })
+                        : ""}
                 </h3>
                 <h3>
                     Investigating Officers:{" "}
-                    {() => {
-                        let str = "";
-                        for (var a = 0; a < this.state.chargesheet.InvestigatingOfficers.length; a++)
-                            str += str + "; " + this.state.chargesheet.InvestigatingOfficers[a];
-                        return str;
-                    }}
+                    {this.state.chargesheet.InvestigatingOfficers
+                        ? this.state.chargesheet.InvestigatingOfficers.map((content, index) => {
+                              return <span>{content + "; "}</span>;
+                          })
+                        : ""}
                 </h3>
                 <h3>
                     Investigation IDs:{" "}
-                    {() => {
-                        let str = "";
-                        for (var a = 0; a < this.state.chargesheet.InvestigatingOfficers.length; a++)
-                            str += str + "; " + this.state.chargesheet.InvestigatingOfficers[a];
-                        return str;
-                    }}
+                    {this.state.chargesheet.InvestigationIDs
+                        ? this.state.chargesheet.InvestigationIDs.map((content, index) => {
+                              return <span>{content + "; "}</span>;
+                          })
+                        : ""}
                 </h3>
 
                 <h2>Accused Persons</h2>

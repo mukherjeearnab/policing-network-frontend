@@ -46,6 +46,7 @@ class App extends Component {
                 <h2>New Charge Sheet</h2>
                 {this.state.message}
                 <TextField
+                    type="date"
                     className="inputs"
                     label="Date"
                     variant="outlined"
@@ -58,6 +59,8 @@ class App extends Component {
                         });
                     }}
                 />
+                <br />
+                <br />
                 <TextField
                     type="date"
                     className="inputs"
@@ -72,8 +75,9 @@ class App extends Component {
                         });
                     }}
                 />
+                <br />
+                <br />
                 <TextField
-                    type="date"
                     className="inputs"
                     label="Charge Sheet Title"
                     variant="outlined"
@@ -86,8 +90,9 @@ class App extends Component {
                         });
                     }}
                 />
-
-                <Button onClick={this.onAddInvestigation} variant="contained" color="primary">
+                <br />
+                <br />
+                <Button onClick={this.onAddFIR} variant="contained" color="primary">
                     Init. Charge Sheet
                 </Button>
             </div>
