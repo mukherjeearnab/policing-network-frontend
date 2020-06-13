@@ -19,7 +19,7 @@ class App extends Component {
             MothersName: "",
             Religion: "",
             Occupation: "",
-            FingerPrint: ["X1", "X2", "X3", "X4", "X5", "X6", "X7", "X8", "X9", "X0"],
+            Fingerprint: ["X1", "X2", "X3", "X4", "X5", "X6", "X7", "X8", "X9", "X0"],
         },
         message: "",
     };
@@ -61,15 +61,12 @@ class App extends Component {
         // Request made to the backend api
 
         // Send formData object
-        setTimeout(() => {
+        /*setTimeout(() => {
             this.setState({ message: "Citizen with ID " + this.state.profile.ID + " Saved!" });
-        }, 15000);
+        }, 15000);*/
         var reply = await axios.post("http://192.168.1.30:3000/api/main/citizen/add", formData, config);
         console.log(reply);
-        setTimeout(function () {
-            this.setState({ message: "Citizen with ID " + "user5" + " Saved!" });
-        }, 5000);
-        //this.setState({ message: "Citizen with ID " + reply.data.hash.ID + " Saved!" });
+        this.setState({ message: "Citizen with ID " + reply.data.hash.ID + " Saved!" });
     };
 
     fileData = () => {

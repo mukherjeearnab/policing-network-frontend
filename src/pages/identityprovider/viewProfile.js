@@ -61,7 +61,7 @@ class App extends Component {
                     width="200"
                     src={"https://ipfs.infura.io/ipfs/" + this.state.profile.Photo}
                 ></img>
-                <h3>{this.state.profile.Name}</h3>
+                <h3>Citizen Name: {this.state.profile.Name}</h3>
                 <h3>Father's Name: {this.state.profile.FathersName}</h3>
                 <h3>Mother's Name: {this.state.profile.MothersName}</h3>
                 <h3>Religion: {this.state.profile.Religion}</h3>

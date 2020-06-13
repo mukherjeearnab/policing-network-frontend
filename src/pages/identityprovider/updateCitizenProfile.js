@@ -5,28 +5,8 @@ import { TextField, Button, CircularProgress } from "@material-ui/core";
 class App extends Component {
     state = {
         ID: "",
-        profile: {
-            ID: "",
-            Name: "",
-            Email: "",
-            Phone: "",
-            DOB: "",
-            Gender: "",
-            BloodGroup: "",
-            EyeColor: "",
-            Nationality: "",
-            Address: "",
-            FathersName: "",
-            MothersName: "",
-            Religion: "",
-            Occupation: "",
-            FingerPrint: ["X1", "X2", "X3", "X4", "X5", "X6", "X7", "X8", "X9", "X0"],
-        },
+        profile: {},
         message: "",
-    };
-
-    onFileChange = (event) => {
-        this.setState({ selectedFile: event.target.files[0] });
     };
 
     onAddCitizen = async () => {
@@ -70,26 +50,6 @@ class App extends Component {
         this.setState({ message: "Citizen with ID " + reply.data.hash.ID + " Saved!" });
     };
 
-    fileData = () => {
-        if (this.state.selectedFile) {
-            return (
-                <div>
-                    <h2>File Details:</h2>
-                    <p>File Name: {this.state.selectedFile.name}</p>
-                    <p>File Type: {this.state.selectedFile.type}</p>
-                    <h2>{this.state.ID}</h2>
-                </div>
-            );
-        } else {
-            return (
-                <div>
-                    <br />
-                    <h4>Choose before Pressing the Upload button</h4>
-                </div>
-            );
-        }
-    };
-
     loadContent = async () => {
         const requestOptions = {
             method: "GET",
@@ -109,6 +69,12 @@ class App extends Component {
         let res = await response.json();
         console.log(res);
 
+        var d = new Date(parseInt(res.DOB));
+        res.DOB = d.getFullYear() + "-";
+
+        res.DOB += d.getMonth() + 1 < 10 ? "0" + (d.getMonth() + 1) : d.getMonth() + 1;
+        res.DOB += "-" + d.getDate();
+
         this.setState({ profile: res });
 
         var output = <div>{this.createContent()}</div>;
@@ -119,9 +85,15 @@ class App extends Component {
     createContent = () => {
         return (
             <div>
-                <TextField variant="outlined" type="file" label="Citizen Photo" onChange={this.onFileChange} />
+                <TextField
+                    variant="outlined"
+                    type="file"
+                    label="Citizen Photo"
+                    onChange={(event) => {
+                        this.setState({ selectedFile: event.target.files[0] });
+                    }}
+                />
                 <br />
-                {this.fileData()}
                 <TextField
                     className="inputs"
                     label="Nationality"
@@ -159,6 +131,7 @@ class App extends Component {
                     variant="outlined"
                     value={this.state.profile.DOB}
                     onChange={(event) => {
+                        console.log(this.state.profile.DOB);
                         let profile = this.state.profile;
                         profile.DOB = event.target.value;
                         this.setState({
@@ -330,7 +303,7 @@ class App extends Component {
     render() {
         return (
             <div>
-                <h2>New Citizen Profile</h2>
+                <h2>Update Citizen Profile</h2>
                 <TextField
                     className="inputs"
                     label="Citizen ID"
@@ -342,9 +315,12 @@ class App extends Component {
                         });
                     }}
                 ></TextField>
-                <Button onClick={this.loadContent()} variant="contained" color="primary">
+                <br />
+                <br />
+                <Button onClick={this.loadContent} variant="contained" color="primary">
                     Load Citizen Profile
                 </Button>
+                <hr />
                 {this.state.message}
             </div>
         );
