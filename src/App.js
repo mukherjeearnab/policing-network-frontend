@@ -79,7 +79,7 @@ function App() {
                 <Route exact path="/addEvidenceID/:id" component={addEvidenceID}></Route>
                 <Route exact path="/addSentence/:id" component={addSentence}></Route>
                 <Route exact path="/setComplete/:id" component={setComplete}></Route>
-                <Route exact path="/viewProfile" component={viewProfile}></Route>
+                <Route exact path="/viewProfile/:id" component={viewProfile}></Route>
             </ThemeProvider>
         </div>
     );

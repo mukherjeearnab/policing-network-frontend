@@ -11,6 +11,20 @@ class App extends Component {
         output: null,
     };
 
+    onComponentDidMount() {
+        const { id } = this.props.match.params;
+        if (id !== "0") {
+            this.setState({
+                ID: id,
+                message: (
+                    <p>
+                        Press <b>LOAD Profile</b> to View Profile.
+                    </p>
+                ),
+            });
+        }
+    }
+
     loadProfile = async () => {
         const requestOptions = {
             method: "GET",

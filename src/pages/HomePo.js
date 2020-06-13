@@ -18,7 +18,7 @@ class App extends Component {
                 <h2>
                     {this.state.redirect}Welcome, {localStorage.getItem("user")}!
                 </h2>
-                <Link to="/viewProfile">Check Citizen Profile</Link> <br />
+                <Link to="/viewProfile/0">Check Citizen Profile</Link> <br />
                 <Link to="/viewFIRs">View FIR's</Link> <br />
                 <Link to="/newInvestigation">Start Investigation</Link> <br />
                 <Link to="/viewInvestigation/0">View / Add Content to Investigation</Link> <br />

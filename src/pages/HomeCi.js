@@ -40,6 +40,7 @@ class App extends Component {
                     {this.state.redirect}Welcome, {this.state.profile.Name}!
                 </h2>
                 <Link to="/">Home</Link> <br />
+                <Link to={"/viewProfile/" + this.state.profile.ID}>View Profile</Link> <br />
                 <Link to="/viewFIRs">View FIR's</Link> <br />
                 <Link to="/newFIR">Add FIR</Link> <br />
                 <Link to="/submitEvidence">Add Evidence</Link> <br /> <br />
