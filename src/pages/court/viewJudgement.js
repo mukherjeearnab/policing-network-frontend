@@ -194,7 +194,7 @@ class App extends Component {
     render() {
         return (
             <div>
-                <h2>New Investigation</h2>
+                <h2>View / Edit Judgement</h2>
                 <TextField
                     className="inputs"
                     label="Judgement ID"
